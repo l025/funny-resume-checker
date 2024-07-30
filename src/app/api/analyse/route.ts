@@ -53,9 +53,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       text: response.data.choices[0].message.content,
+      resume: text,
     });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ success: false, model: aiModel });
+    return NextResponse.json({ success: false });
   }
 }
