@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Vazirmatn:wght@100..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,17 +19,72 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  font-family: "Vazirmatn", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
+  /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .rtl {
+    direction: rtl;
+  }
+}
+
+.loader {
+  width: 100px;
+  height: 75px;
+  background: #fff;
+  position: relative;
+  border-radius: 100%;
+}
+.loader:before {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  border: 15px solid transparent;
+  border-top: 25px solid #fff;
+  transform: rotate(45deg);
+  top: 50px;
+  left: -15px;
+}
+
+.loader:after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: #9089fc;
+  box-shadow: 20px 0 #9089fc, -20px 0 #9089fc;
+  animation: flash 0.5s ease-out infinite alternate;
+}
+
+@keyframes flash {
+  0% {
+    background-color: #ff80b5;
+    box-shadow: 20px 0 #ff80b5, -20px 0 #9089fc;
+  }
+  50% {
+    background-color: #9089fc;
+    box-shadow: 20px 0 #ff80b5, -20px 0 #ff80b5;
+  }
+  100% {
+    background-color: #ff80b5;
+    box-shadow: 20px 0 #9089fc, -20px 0 #ff80b5;
   }
 }
