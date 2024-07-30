@@ -18,8 +18,9 @@ export async function POST(request: NextRequest) {
   const text = response.text;
 
   // ai
+  let aiModel;
   try {
-    const aiModel = process.env.AI_MODEL;
+    aiModel = process.env.AI_MODEL;
     const aiToken = process.env.AI_TOKEN;
     const urlAiAPI = "https://api.openai.com/v1/chat/completions";
 
@@ -55,6 +56,6 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ success: false });
+    return NextResponse.json({ success: false, model: aiModel });
   }
 }
