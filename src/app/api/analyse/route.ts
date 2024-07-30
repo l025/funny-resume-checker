@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
   const response = await pdf(buffer);
-  const text = response.text;
+  const text = response.text.replaceAll("\n", " ");
 
   // ai
   let aiModel;
@@ -49,11 +49,12 @@ export async function POST(request: NextRequest) {
         Authorization: `Bearer ${aiToken}`,
       },
     });
-    console.log(response);
+
     return NextResponse.json({
       success: true,
       text: response.data.choices[0].message.content,
       resume: text,
+      r1: text.replaceAll("\n", " "),
     });
   } catch (error) {
     console.error(error);
