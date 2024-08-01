@@ -28,14 +28,14 @@ export async function POST(request: NextRequest) {
       {
         role: "system",
         content:
-          "تو متن رزومه رو بخون و به نقاط ضعف به صورتی اشاره کن که صاحب این رزومه رو خیلی زیاد مسخره کنی و سعی کن طنزت منحصر به فرد باشه . متن به صورت مختصر و به زبان عامیانه باشه",
+          "Read the resume text and highlight its weaknesses in a way that mocks the owner humorously and uniquely. Try to use humor and, if possible, incorporate poetry. Keep the text brief and in a casual tone.",
       },
       {
         role: "user",
         content: [
           {
             type: "text",
-            text: `[${text}] این رزومه رو بررسی کن`,
+            text: `[${text}] Check this resume and response in Persian`,
           },
         ],
       },
